@@ -79,6 +79,7 @@ public class Chremastics {
                         )
                         .addSocial(SocialType.discord("https://discord.gg/ZesGqhGnAN"))
                         .addSocial(SocialType.kofi("https://ko-fi.com/vortianski"))
+                        .addSocial(SocialType.github("https://github.com/Vortianski/Chremastics"))
                         .build()
         );
     }

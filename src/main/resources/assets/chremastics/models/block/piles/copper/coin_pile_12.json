@@ -1,0 +1,8 @@
+{
+  "parent": "vortylib:block/definition/layer_model_12",
+  "textures": {
+    "particle": "chremastics:block/copper_pile_end",
+    "end": "chremastics:block/copper_pile_end",
+    "side": "chremastics:block/copper_pile_side"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "item.chremastics.copper_coin": "Copper Coin",
+  "item.chremastics.silver_coin": "Silver Coin",
+  "item.chremastics.gold_coin": "Gold Coin",
+  "item.chremastics.platinum_coin": "Platinum Coin",
+  "item.chremastics.coin_bag": "Coin Bag",
+  "item.chremastics.bent_coin": "Bent Coin",
+  "item.chremastics.traders_insignia": "Traders Insignia",
+
+  "chremastics.tooltip.bent_coin": "When equipped has a chance of %s%% to double dropped coins from killed entities, and %s%% to drop a single copper coin",
+  "chremastics.tooltip.traders_insignia": "When equipped, reduces coin prices when trading with villagers by %s%%",
+
+  "subtitle.chremastics.coin_jingle": "Coins Jingle",
+
+  "chremastics.coin.value": "Coin value: %s¢"
+}

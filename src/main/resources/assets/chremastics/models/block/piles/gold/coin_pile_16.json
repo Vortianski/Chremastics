@@ -1,0 +1,8 @@
+{
+  "parent": "vortylib:block/definition/layer_model_16",
+  "textures": {
+    "particle": "chremastics:block/gold_pile_end",
+    "end": "chremastics:block/gold_pile_end",
+    "side": "chremastics:block/gold_pile_side"
+  }
+}

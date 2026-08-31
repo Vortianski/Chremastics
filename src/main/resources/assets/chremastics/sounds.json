@@ -1,0 +1,77 @@
+{
+  "coin_step": {
+    "subtitle": "subtitle.chremastics.coin_jingle",
+    "sounds": [
+      {
+        "name": "chremastics:coin_step",
+        "pitch": 0.9
+      },
+      {
+        "name": "chremastics:coin_step",
+        "pitch": 0.95
+      },
+      {
+        "name": "chremastics:coin_step",
+        "pitch": 1.0
+      },
+      {
+        "name": "chremastics:coin_step",
+        "pitch": 1.05
+      },
+      {
+        "name": "chremastics:coin_step",
+        "pitch": 1.1
+      }
+    ]
+  },
+  "coin_break": {
+    "subtitle": "subtitle.chremastics.coin_jingle",
+    "sounds": [
+      {
+        "name": "chremastics:coin_break",
+        "pitch": 0.9
+      },
+      {
+        "name": "chremastics:coin_break",
+        "pitch": 0.95
+      },
+      {
+        "name": "chremastics:coin_break",
+        "pitch": 1.0
+      },
+      {
+        "name": "chremastics:coin_break",
+        "pitch": 1.05
+      },
+      {
+        "name": "chremastics:coin_break",
+        "pitch": 1.1
+      }
+    ]
+  },
+  "coin_fall": {
+    "subtitle": "subtitle.chremastics.coin_jingle",
+    "sounds": [
+      {
+        "name": "chremastics:coin_fall",
+        "pitch": 0.9
+      },
+      {
+        "name": "chremastics:coin_fall",
+        "pitch": 0.95
+      },
+      {
+        "name": "chremastics:coin_fall",
+        "pitch": 1.0
+      },
+      {
+        "name": "chremastics:coin_fall",
+        "pitch": 1.05
+      },
+      {
+        "name": "chremastics:coin_fall",
+        "pitch": 1.1
+      }
+    ]
+  }
+}

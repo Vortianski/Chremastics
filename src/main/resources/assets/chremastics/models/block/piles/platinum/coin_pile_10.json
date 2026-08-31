@@ -1,0 +1,8 @@
+{
+  "parent": "vortylib:block/definition/layer_model_10",
+  "textures": {
+    "particle": "chremastics:block/platinum_pile_end",
+    "end": "chremastics:block/platinum_pile_end",
+    "side": "chremastics:block/platinum_pile_side"
+  }
+}

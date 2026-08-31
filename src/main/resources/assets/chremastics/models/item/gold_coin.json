@@ -1,0 +1,30 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "chremastics:item/gold_coin"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "chremastics:cvalue": 0.09
+      },
+      "model": "chremastics:item/stack/gold/stack_small"
+    },
+    {
+      "predicate": {
+        "chremastics:cvalue": 0.27
+      },
+      "model": "chremastics:item/stack/gold/stack_medium"
+    },{
+      "predicate": {
+        "chremastics:cvalue": 0.45
+      },
+      "model": "chremastics:item/stack/gold/stack_large"
+    },{
+      "predicate": {
+        "chremastics:cvalue": 0.63
+      },
+      "model": "chremastics:item/stack/gold/stack_largest"
+    }
+  ]
+}

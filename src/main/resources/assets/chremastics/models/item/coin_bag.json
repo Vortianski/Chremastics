@@ -1,0 +1,20 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "chremastics:item/bag_small"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "chremastics:cvalue": 0.5
+      },
+      "model": "chremastics:item/coin_bag/bag_medium"
+    },
+    {
+      "predicate": {
+        "chremastics:cvalue": 1.0
+      },
+      "model": "chremastics:item/coin_bag/bag_big"
+    }
+  ]
+}

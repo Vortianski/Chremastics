@@ -3,7 +3,6 @@ package xox.labvorty.chremastics.data.utilities;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.neoforged.fml.ModList;
-import xox.labvorty.chremastics.init.ChremasticsCurioItems;
 import xox.labvorty.vortylib.utilities.VortyLibCurioUtilities;
 
 public class CurioUtilities {

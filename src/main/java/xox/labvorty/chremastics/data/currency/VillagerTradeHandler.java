@@ -7,7 +7,6 @@ import net.minecraft.world.item.trading.ItemCost;
 import net.minecraft.world.item.trading.MerchantOffer;
 import org.apache.commons.lang3.tuple.Pair;
 import xox.labvorty.chremastics.data.configs.CommonConfig;
-import xox.labvorty.chremastics.data.utilities.CurioUtilities;
 import xox.labvorty.chremastics.init.ChremasticsDataComponents;
 import xox.labvorty.chremastics.init.ChremasticsItems;
 import xox.labvorty.chremastics.items.CoinItem;

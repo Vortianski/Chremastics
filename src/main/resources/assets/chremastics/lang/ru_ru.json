@@ -1,0 +1,21 @@
+{
+  "item.chremastics.copper_coin": "Медная Монета",
+  "item.chremastics.silver_coin": "Серебряная Монета",
+  "item.chremastics.gold_coin": "Золотая Монета",
+  "item.chremastics.platinum_coin": "Платиновая Монета",
+  "item.chremastics.coin_bag": "Мешок Монет",
+  "item.chremastics.bent_coin": "Погнутая Монета",
+  "item.chremastics.traders_insignia": "Печать Торговца",
+
+  "chremastics.tooltip.bent_coin": "Когда одето имеет шанс %s%% удвоить полученные монеты после убийства существ, и %s%% получить только 1 Медную Монету",
+  "chremastics.tooltip.traders_insignia": "Когда одето, снижает цену покупки за монеты у жителей на %s%%",
+  "chremastics.tooltip.deposit_zone": "Положить на счёт предмет удерживаемый курсором",
+  "chremastics.tooltip.deposit_all": "Положить на счёт все монеты в инвентаре",
+
+  "subtitle.chremastics.coin_jingle": "Монеты Звенят",
+
+  "vortylib.tab.coins": "Монеты",
+  "vortylib.tab.coin_bags": "Мешки Монет",
+
+  "chremastics.coin.value": "Ценность монеты: %s¢"
+}

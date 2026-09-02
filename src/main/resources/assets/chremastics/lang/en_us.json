@@ -9,8 +9,13 @@
 
   "chremastics.tooltip.bent_coin": "When equipped has a chance of %s%% to double dropped coins from killed entities, and %s%% to drop a single copper coin",
   "chremastics.tooltip.traders_insignia": "When equipped, reduces coin prices when trading with villagers by %s%%",
+  "chremastics.tooltip.deposit_zone": "Deposit coin held by cursor",
+  "chremastics.tooltip.deposit_all": "Deposit all coins from inventory",
 
   "subtitle.chremastics.coin_jingle": "Coins Jingle",
+
+  "vortylib.tab.coins": "Coins",
+  "vortylib.tab.coin_bags": "Coin Bags",
 
   "chremastics.coin.value": "Coin value: %s¢"
 }

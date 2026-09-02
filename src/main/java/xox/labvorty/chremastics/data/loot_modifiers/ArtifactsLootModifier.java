@@ -12,10 +12,7 @@ import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
 import net.neoforged.neoforge.common.loot.LootModifier;
 import org.jetbrains.annotations.NotNull;
 import xox.labvorty.chremastics.data.configs.CommonConfig;
-import xox.labvorty.chremastics.data.currency.CurrencyHandlers;
 import xox.labvorty.chremastics.init.ChremasticsCurioItems;
-import xox.labvorty.chremastics.init.ChremasticsDataComponents;
-import xox.labvorty.chremastics.init.ChremasticsItems;
 
 public class ArtifactsLootModifier extends LootModifier {
     public static final MapCodec<ArtifactsLootModifier> CODEC = RecordCodecBuilder.mapCodec(instance -> LootModifier.codecStart(instance).apply(instance, ArtifactsLootModifier::new));

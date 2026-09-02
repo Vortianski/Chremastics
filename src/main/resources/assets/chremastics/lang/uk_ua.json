@@ -1,0 +1,21 @@
+{
+  "item.chremastics.copper_coin": "Мідна Монета",
+  "item.chremastics.silver_coin": "Срібна Монета",
+  "item.chremastics.gold_coin": "Золота Монета",
+  "item.chremastics.platinum_coin": "Платинова Монета",
+  "item.chremastics.coin_bag": "Мішок Монет",
+  "item.chremastics.bent_coin": "Погнута Монета",
+  "item.chremastics.traders_insignia": "Печатка Торговця",
+
+  "chremastics.tooltip.bent_coin": "Коли одягнено має шанс %s%% подвоїти тримані монети після вбиства створінь, і %s%% отримати лише 1 Мідну Монету",
+  "chremastics.tooltip.traders_insignia": "Когда одягнено, знижує ціну покупки за монети у селян на %s%%",
+  "chremastics.tooltip.deposit_zone": "Покласти на рахунок монету утримувану курсором",
+  "chremastics.tooltip.deposit_all": "Покласти на рахунок всі монети в інвентарі",
+
+  "subtitle.chremastics.coin_jingle": "Монети Дзвенять",
+
+  "vortylib.tab.coins": "Монети",
+  "vortylib.tab.coin_bags": "Мішки Монет",
+
+  "chremastics.coin.value": "Цінність монети: %s¢"
+}

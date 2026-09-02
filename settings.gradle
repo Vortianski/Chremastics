@@ -8,4 +8,6 @@ plugins {
     id 'org.gradle.toolchains.foojay-resolver-convention' version '1.0.0'
 }
 
-includeBuild("../vortylib-template-1.21.1")
+def vortyLibPath = System.getenv("VORTYLIB_PATH") ?: "../vortylib-template-1.21.1"
+
+includeBuild(vortyLibPath)

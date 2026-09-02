@@ -2,7 +2,6 @@ package xox.labvorty.chremastics.data.utilities;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
@@ -23,6 +22,7 @@ import xox.labvorty.chremastics.gui.widget.ImageButton;
 import xox.labvorty.chremastics.gui.widget.ItemButton;
 import xox.labvorty.chremastics.init.ChremasticsAttachments;
 import xox.labvorty.chremastics.init.ChremasticsItems;
+import net.minecraft.client.gui.components.Tooltip;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -101,6 +101,7 @@ public class CoinPurseOverlay {
                     PacketDistributor.sendToServer(new CoinPayload(0, 0, 0));
                 }
         );
+        depositZoneButton.setTooltip(Tooltip.create(Component.translatable("chremastics.tooltip.deposit_zone")));
         depositZoneButton.visible = purseOpen;
         event.addListener(depositZoneButton);
 
@@ -116,6 +117,7 @@ public class CoinPurseOverlay {
                 }
         );
         depositAllButton.visible = purseOpen;
+        depositAllButton.setTooltip(Tooltip.create(Component.translatable("chremastics.tooltip.deposit_all")));
         event.addListener(depositAllButton);
 
         withdrawSteppers.clear();

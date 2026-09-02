@@ -3,8 +3,6 @@ package xox.labvorty.chremastics.init;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
-import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import xox.labvorty.chremastics.Chremastics;
 import xox.labvorty.chremastics.data.network.CoinPayload;
 import xox.labvorty.chremastics.data.network.ConfigSyncPacket;

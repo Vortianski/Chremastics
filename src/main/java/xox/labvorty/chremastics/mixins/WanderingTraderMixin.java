@@ -1,24 +1,18 @@
 package xox.labvorty.chremastics.mixins;
 
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.npc.VillagerTrades;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.npc.WanderingTrader;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.item.trading.MerchantOffers;
 import org.apache.commons.lang3.tuple.Pair;
 import org.spongepowered.asm.mixin.Mixin;
-import net.minecraft.world.entity.npc.WanderingTrader;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import xox.labvorty.chremastics.data.configs.CommonConfig;
 import xox.labvorty.chremastics.data.currency.VillagerTradeHandler;
-import xox.labvorty.chremastics.data.utilities.CurioUtilities;
-import xox.labvorty.chremastics.init.ChremasticsCurioItems;
 import xox.labvorty.chremastics.mixin_helpers.AbstractVillagerAccessor;
 
 @Mixin(WanderingTrader.class)

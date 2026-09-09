@@ -40,7 +40,7 @@ public class CreativeModeTabProvider {
                 99000000
         );
 
-        for (int value : values) {
+        for (long value : values) {
             ItemStack itemStack = ChremasticsItems.COIN_BAG.get().getDefaultInstance();
             itemStack.set(ChremasticsDataComponents.VALUE, value);
             itemStacks.add(itemStack);

@@ -191,11 +191,11 @@ public class CoinPurseOverlay {
                 Currency[] sorted = Currency.values().clone();
                 Arrays.sort(sorted, (a, b) -> Integer.compare(b.getValue(), a.getValue()));
 
-                int cellWidth = 84 / 2;
-                int remaining = minecraft.player.getData(ChremasticsAttachments.COIN_BALANCE);
+                int cellWidth = 130 / 2;
+                long remaining = minecraft.player.getData(ChremasticsAttachments.COIN_BALANCE);
                 for (int i = 0; i < sorted.length; i++) {
                     Currency tier = sorted[i];
-                    int count = remaining / tier.getValue();
+                    long count = remaining / tier.getValue();
                     remaining %= tier.getValue();
 
                     int col = i % 2;

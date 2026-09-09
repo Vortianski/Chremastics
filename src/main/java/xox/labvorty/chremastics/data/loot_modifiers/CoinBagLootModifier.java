@@ -50,6 +50,6 @@ public class CoinBagLootModifier extends LootModifier {
             return false;
         }
 
-        return true;
+        return lootTable.getPath().startsWith("chests/");
     }
 }

@@ -47,9 +47,9 @@ public class ChremasticsClient {
                     ChremasticsItems.COIN_BAG.get(),
                     ResourceLocation.parse("chremastics:cvalue"),
                     ((itemStack, clientLevel, livingEntity, i) -> {
-                        int value = itemStack.getOrDefault(
+                        long value = itemStack.getOrDefault(
                                 ChremasticsDataComponents.VALUE,
-                                0
+                                0L
                         );
 
                         int coinCount = 0;

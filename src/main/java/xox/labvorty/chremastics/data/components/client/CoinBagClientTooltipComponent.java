@@ -23,9 +23,9 @@ import java.util.Map;
 public class CoinBagClientTooltipComponent implements ClientTooltipComponent {
     private static final int ENTRY_WIDTH = 32;
 
-    private final int value;
+    private final long value;
 
-    public CoinBagClientTooltipComponent(int value) {
+    public CoinBagClientTooltipComponent(long value) {
         this.value = value;
     }
 

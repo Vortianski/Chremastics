@@ -11,10 +11,10 @@ import java.util.function.Supplier;
 
 public class ChremasticsDataComponents {
     public static final DeferredRegister.DataComponents DATA_COMPONENTS = DeferredRegister.createDataComponents(Registries.DATA_COMPONENT_TYPE, Chremastics.MOD_ID);
-    public static final Supplier<DataComponentType<Integer>> VALUE = DATA_COMPONENTS.registerComponentType(
+    public static final Supplier<DataComponentType<Long>> VALUE = DATA_COMPONENTS.registerComponentType(
             "value",
             builder -> builder
-                    .persistent(Codec.INT)
-                    .networkSynchronized(ByteBufCodecs.INT)
+                    .persistent(Codec.LONG)
+                    .networkSynchronized(ByteBufCodecs.VAR_LONG)
     );
 }

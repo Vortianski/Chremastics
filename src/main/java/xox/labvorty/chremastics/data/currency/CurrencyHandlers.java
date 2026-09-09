@@ -1,13 +1,16 @@
 package xox.labvorty.chremastics.data.currency;
 
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import org.apache.commons.lang3.tuple.Pair;
 import xox.labvorty.chremastics.data.configs.CommonConfig;
 import xox.labvorty.chremastics.init.ChremasticsItems;
 import xox.labvorty.chremastics.items.CoinItem;
+import xox.labvorty.vortylib.utilities.VortyLibUtilities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +18,7 @@ import java.util.Optional;
 
 public class CurrencyHandlers {
     private static final int MAX_STACK_SIZE = 99;
+    public static final int MAX_PHYSICAL_STACKS = 16;
 
     public static CoinItem getCoinFromCurrency(Currency currency) {
         return switch (currency) {
@@ -25,7 +29,37 @@ public class CurrencyHandlers {
         };
     }
 
-    public static List<ItemStack> getStacksFromValue(int value) {
+    public static Pair<List<ItemStack>, Long> getStacksFromValueLimited(long value, int maxStacks) {
+        List<ItemStack> stacks = new ArrayList<>();
+
+        if (value <= 0 || maxStacks <= 0)
+            return Pair.of(stacks, value);
+
+        Currency[] currencies = Currency.values();
+        long remaining = value;
+
+        for (int i = currencies.length - 1; i >= 0 && stacks.size() < maxStacks; i--) {
+            Currency currency = currencies[i];
+
+            long count = remaining / currency.getValue();
+
+            while (count > 0 && stacks.size() < maxStacks) {
+                int stackSize = (int) Math.min(count, MAX_STACK_SIZE);
+
+                ItemStack stack = getCoinFromCurrency(currency).getDefaultInstance();
+                stack.setCount(stackSize);
+
+                stacks.add(stack);
+
+                remaining -= (long) stackSize * currency.getValue();
+                count -= stackSize;
+            }
+        }
+
+        return Pair.of(stacks, remaining);
+    }
+
+    public static List<ItemStack> getStacksFromValue(long value) {
         List<ItemStack> stacks = new ArrayList<>();
 
         if (value <= 0)
@@ -36,7 +70,7 @@ public class CurrencyHandlers {
         for (int i = currencies.length - 1; i >= 0; i--) {
             Currency currency = currencies[i];
 
-            int count = value / currency.getValue();
+            long count = value / currency.getValue();
 
             if (count <= 0)
                 continue;
@@ -44,7 +78,7 @@ public class CurrencyHandlers {
             value %= currency.getValue();
 
             while (count > 0) {
-                int stackSize = Math.min(count, MAX_STACK_SIZE);
+                int stackSize = (int) Math.min(count, MAX_STACK_SIZE);
 
                 ItemStack stack = getCoinFromCurrency(currency).getDefaultInstance();
                 stack.setCount(stackSize);
@@ -84,7 +118,6 @@ public class CurrencyHandlers {
 
             int remainder = totalValue % currency.getValue();
 
-            // Round to whichever amount is closer.
             if (remainder >= currency.getValue() / 2) {
                 amount++;
             }
@@ -144,7 +177,6 @@ public class CurrencyHandlers {
             }
         }
 
-        // Remaining value can be rounded into the second stack.
         if (totalValue > 0 && result.size() < 2) {
             Currency currency = Currency.COPPER;
 
@@ -177,7 +209,7 @@ public class CurrencyHandlers {
     }
 
     public static List<ItemStack> getStacksFromCurrency(Currency currency, int amount) {
-        return getStacksFromValue(currency.getValue() * amount);
+        return getStacksFromValue((long) currency.getValue() * amount);
     }
 
     public static List<ItemStack> getChange(Currency currency, int value) {
@@ -199,7 +231,7 @@ public class CurrencyHandlers {
         return getStacksFromCurrency(to, from.getValue() / to.getValue());
     }
 
-    public static int buildValueFromRandomForBag(RandomSource randomSource) {
+    public static long buildValueFromRandomForBag(RandomSource randomSource) {
         int value = buildValueFromRandom(randomSource);
 
         if (value == 0) {
@@ -236,6 +268,32 @@ public class CurrencyHandlers {
         ) * Currency.PLATINUM.getValue() : 0;
 
         return finalValue;
+    }
+
+    public static void giveValue(Player player, long value, int maxStacks) {
+        List<ItemStack> stacks = CurrencyHandlers.getStacksFromValue(value);
+
+        long materializedValue = 0;
+
+        int stacksGiven = 0;
+
+        for (ItemStack stack : stacks) {
+            if (stacksGiven >= maxStacks) {
+                break;
+            }
+
+            Currency currency = ((CoinItem) stack.getItem()).getCurrency();
+            materializedValue += (long) currency.getValue() * stack.getCount();
+
+            VortyLibUtilities.tryInsertOrDrop(player, stack);
+            stacksGiven++;
+        }
+
+        long remainingValue = value - materializedValue;
+
+        if (remainingValue > 0) {
+            PlayerCoinPurse.addBalance((ServerPlayer)player, remainingValue);
+        }
     }
 
     public static boolean isCoinEntity(LivingEntity livingEntity) {

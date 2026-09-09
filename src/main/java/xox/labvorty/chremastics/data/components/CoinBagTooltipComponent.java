@@ -5,4 +5,4 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public record CoinBagTooltipComponent(int value) implements TooltipComponent {}
+public record CoinBagTooltipComponent(long value) implements TooltipComponent {}

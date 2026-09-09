@@ -92,7 +92,7 @@ public class VillagerTradeHandler {
 
         if (itemStack.is(Items.EMERALD)) {
             boolean useBag = CommonConfig.USE_BAGS_FOR_TRADES.get();
-            int value = itemStack.getCount() * CommonConfig.EMERALD_VALUE.get();
+            long value = (long)itemStack.getCount() * CommonConfig.EMERALD_VALUE.get();
 
             if (useBag) {
                 ItemStack bagStack = ChremasticsItems.COIN_BAG.get().getDefaultInstance();

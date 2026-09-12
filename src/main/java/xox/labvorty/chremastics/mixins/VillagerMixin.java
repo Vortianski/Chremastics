@@ -9,6 +9,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.item.trading.MerchantOffers;
+import net.neoforged.fml.ModList;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -16,12 +17,12 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import xox.labvorty.chremastics.data.configs.CommonConfig;
 import xox.labvorty.chremastics.data.currency.VillagerTradeHandler;
-import xox.labvorty.chremastics.data.utilities.CurioUtilities;
-import xox.labvorty.chremastics.init.ChremasticsCurioItems;
 import xox.labvorty.chremastics.mixin_helpers.AbstractVillagerAccessor;
 
 @Mixin(Villager.class)
 public abstract class VillagerMixin {
+    private static final boolean CURIOS_LOADED = ModList.get().isLoaded("curios");
+
     @Shadow
     public abstract VillagerData getVillagerData();
 
@@ -76,12 +77,16 @@ public abstract class VillagerMixin {
 
     @Inject(method = "updateSpecialPrices", at = @At("TAIL"))
     private void chremastics$applyCustomDiscount(Player player, CallbackInfo ci) {
+        if (!CURIOS_LOADED) {
+            return;
+        }
+
         Villager villager = (Villager) (Object) this;
 
         double discount = CommonConfig.TRADERS_INSIGNIA_DISCOUNT.get();
-        if (discount <= 0 || !CurioUtilities.hasCurioItem(
+        if (discount <= 0 || !xox.labvorty.chremastics.data.utilities.CurioUtilities.hasCurioItem(
                 player,
-                ChremasticsCurioItems.TRADERS_INSIGNIA.get()
+                xox.labvorty.chremastics.init.ChremasticsCurioItems.TRADERS_INSIGNIA.get()
         )) {
             return;
         }
@@ -91,8 +96,7 @@ public abstract class VillagerMixin {
         for (int i = 0; i < offers.size(); i++) {
             MerchantOffer offer = offers.get(i);
 
-            MerchantOffer discountedOffer =
-                    VillagerTradeHandler.applyDiscount(offer, discount);
+            MerchantOffer discountedOffer = VillagerTradeHandler.applyDiscount(offer, discount);
 
             discountedOffer.addToSpecialPriceDiff(
                     -Mth.floor(

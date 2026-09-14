@@ -95,6 +95,10 @@ dependencies {
 
     //Jade
     implementation("curse.maven:jade-324717:8591319")
+
+    //Waystones
+    implementation("curse.maven:waystones-245755:8873000")
+    implementation("curse.maven:balm-531761:8645517")
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {

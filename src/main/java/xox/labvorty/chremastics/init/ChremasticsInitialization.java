@@ -48,6 +48,9 @@ public class ChremasticsInitialization {
                                             .addDouble(Component.literal("Coins Lost on Death"), Component.literal("Percentage of coins lost on death"), CommonConfig.COINS_LOST_ON_DEATH, 0.5, 0, 1, 2)
                                             .addDouble(Component.literal("Coin Bag Spawn Chance"), Component.literal("How frequently coin bag spawns in chests"), CommonConfig.COIN_BAG_SPAWN_CHANCE, 0.05, 0, 1, 2)
                                             .addDouble(Component.literal("Artifacts Spawn Chance"), Component.literal("How frequently artifacts spawn in chests"), CommonConfig.ARTIFACTS_SPAWN_CHANCE, 0.05, 0, 1, 2)
+                                            .addBoolean(Component.literal("Waystone Consume Coins"), Component.literal("Whether Waystones consume coins when teleporting"), CommonConfig.USE_COINS_IN_WAYSTONES, false)
+                                            .addDouble(Component.literal("Waystone Coins per Block"), Component.literal("How much coins are consumed per block of distance when teleporting using Waystones"), CommonConfig.WAYSTONES_COINS_PER_BLOCK, 0.05, 0, 10, 2)
+                                            .addIntField(Component.literal("Waystone Dimension Cost"), Component.literal("How much coins are consumed when teleporting to another dimension using Waystones"), CommonConfig.WAYSTONES_COINS_FOR_DIMENSION, 50, 0, Integer.MAX_VALUE)
                                             .build()
                             )
                             .clientConfig(

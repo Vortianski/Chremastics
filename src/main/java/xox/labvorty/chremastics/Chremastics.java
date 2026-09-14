@@ -1,21 +1,16 @@
 package xox.labvorty.chremastics;
 
 import com.mojang.logging.LogUtils;
-import net.minecraft.network.chat.Component;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import org.slf4j.Logger;
+import xox.labvorty.chremastics.compat.waystones.ChremasticsWaystoneCompat;
 import xox.labvorty.chremastics.data.configs.ClientConfig;
 import xox.labvorty.chremastics.data.configs.CommonConfig;
 import xox.labvorty.chremastics.init.*;
-import xox.labvorty.vortylib.data.config.ConfigHolder;
-import xox.labvorty.vortylib.data.config.ModEntry;
-import xox.labvorty.vortylib.data.config.ModRegistry;
-import xox.labvorty.vortylib.data.config.SocialType;
-
-import java.util.List;
 
 @Mod(Chremastics.MOD_ID)
 public class Chremastics {
@@ -35,5 +30,9 @@ public class Chremastics {
 
         modContainer.registerConfig(ModConfig.Type.COMMON, CommonConfig.SPEC);
         modContainer.registerConfig(ModConfig.Type.CLIENT, ClientConfig.SPEC);
+
+        if (ModList.get().isLoaded("waystones")) {
+            ChremasticsWaystoneCompat.register();
+        }
     }
 }

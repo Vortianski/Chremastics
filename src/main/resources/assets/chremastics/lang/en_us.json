@@ -22,5 +22,8 @@
   "chremastics.coin.value": "Coin value: %s¢",
 
   "config.jade.plugin_chremastics.coin_pile": "Coin Pile",
-  "chremastics.jade.layers": "Layers: %s"
+  "chremastics.jade.layers": "Layers: %s",
+
+  "chremastics.waystones.not_enough_coins": "Not enough coins to travel! Needed: %s¢ You have: %s¢",
+  "chremastics.waystones.spent_coins": "Spent %s¢ on travel!"
 }

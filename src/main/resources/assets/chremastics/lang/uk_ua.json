@@ -21,5 +21,8 @@
 
   "chremastics.coin.value": "Цінність монети: %s¢",
   "config.jade.plugin_chremastics.coin_pile": "Гірка Монет",
-  "chremastics.jade.layers": "Шари: %s"
+  "chremastics.jade.layers": "Шари: %s",
+
+  "chremastics.waystones.not_enough_coins": "Недостатньо монет для переміщення! Потрібно: %s¢ У вас є: %s¢",
+  "chremastics.waystones.spent_coins": "Витрачено %s¢ на переміщення!"
 }

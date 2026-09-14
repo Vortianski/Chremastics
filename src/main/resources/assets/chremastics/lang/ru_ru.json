@@ -21,5 +21,8 @@
 
   "chremastics.coin.value": "Ценность монеты: %s¢",
   "config.jade.plugin_chremastics.coin_pile": "Кучка Монет",
-  "chremastics.jade.layers": "Слои: %s"
+  "chremastics.jade.layers": "Слои: %s",
+
+  "chremastics.waystones.not_enough_coins": "Недостаточно монет для перемещения! Требуется: %s¢ У вас есть: %s¢",
+  "chremastics.waystones.spent_coins": "Потрачено %s¢ на перемещение!"
 }

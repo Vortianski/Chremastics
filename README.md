@@ -70,6 +70,7 @@ Chremastics is designed with modded environments in mind and aims to integrate c
 
 * Curios integration is optional
 * Jade integration is available
+* Waystones integration is available using and can be tweaked using config
 * Villager trading can optionally use Chremastics currency instead of emeralds
 * Configuration allows the mod to adapt to different modpack designs
 

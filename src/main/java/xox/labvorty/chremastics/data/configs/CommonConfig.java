@@ -221,6 +221,31 @@ public class CommonConfig {
                     1
             );
 
+    public static final ModConfigSpec.BooleanValue USE_COINS_IN_WAYSTONES = BUILDER
+            .comment("Whether coins are consumed on each Waystone use")
+            .define(
+                    "coinsInWaystones",
+                    false
+            );
+
+    public static final ModConfigSpec.DoubleValue WAYSTONES_COINS_PER_BLOCK = BUILDER
+            .comment("Coin spent per block of distance when teleporting using Waystone")
+            .defineInRange(
+                    "coinPerBlockWaystone",
+                    0.05,
+                    0,
+                    10
+            );
+
+    public static final ModConfigSpec.IntValue WAYSTONES_COINS_FOR_DIMENSION = BUILDER
+            .comment("Coins spent for teleporting in another dimension using Waystone")
+            .defineInRange(
+                    "coinsPerDimensionWaystone",
+                    50,
+                    0,
+                    Integer.MAX_VALUE
+            );
+
     public static final ModConfigSpec SPEC = BUILDER.build();
 
     private static boolean validateEntityName(final Object obj) {

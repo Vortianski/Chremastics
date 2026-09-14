@@ -1,4 +1,6 @@
 {
+  "block.chremastics.coin_pile": "Coin Pile",
+
   "item.chremastics.copper_coin": "Copper Coin",
   "item.chremastics.silver_coin": "Silver Coin",
   "item.chremastics.gold_coin": "Gold Coin",
@@ -17,5 +19,8 @@
   "vortylib.tab.coins": "Coins",
   "vortylib.tab.coin_bags": "Coin Bags",
 
-  "chremastics.coin.value": "Coin value: %s¢"
+  "chremastics.coin.value": "Coin value: %s¢",
+
+  "config.jade.plugin_chremastics.coin_pile": "Coin Pile",
+  "chremastics.jade.layers": "Layers: %s"
 }

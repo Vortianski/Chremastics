@@ -1,4 +1,6 @@
 {
+  "block.chremastics.coin_pile": "Гірка Монет",
+
   "item.chremastics.copper_coin": "Мідна Монета",
   "item.chremastics.silver_coin": "Срібна Монета",
   "item.chremastics.gold_coin": "Золота Монета",
@@ -17,5 +19,7 @@
   "vortylib.tab.coins": "Монети",
   "vortylib.tab.coin_bags": "Мішки Монет",
 
-  "chremastics.coin.value": "Цінність монети: %s¢"
+  "chremastics.coin.value": "Цінність монети: %s¢",
+  "config.jade.plugin_chremastics.coin_pile": "Гірка Монет",
+  "chremastics.jade.layers": "Шари: %s"
 }

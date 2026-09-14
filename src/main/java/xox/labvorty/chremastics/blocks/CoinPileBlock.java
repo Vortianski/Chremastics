@@ -12,16 +12,24 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.EntityBlock;
+import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.BlockHitResult;
@@ -45,9 +53,10 @@ import xox.labvorty.chremastics.particles.options.CoinSparkleOptions;
 import java.util.List;
 import java.util.UUID;
 
-public class CoinPileBlock extends Block implements EntityBlock {
+public class CoinPileBlock extends Block implements EntityBlock, SimpleWaterloggedBlock {
     public static final IntegerProperty LAYERS = IntegerProperty.create("layers", 1, 16);
     public static final EnumProperty<Currency> CURRENCY = EnumProperty.create("currency", Currency.class);
+    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
     public CoinPileBlock(Properties properties) {
         super(
@@ -62,6 +71,7 @@ public class CoinPileBlock extends Block implements EntityBlock {
                 this.getStateDefinition().any()
                         .setValue(LAYERS, 1)
                         .setValue(CURRENCY, Currency.COPPER)
+                        .setValue(WATERLOGGED, false)
         );
     }
 
@@ -69,7 +79,38 @@ public class CoinPileBlock extends Block implements EntityBlock {
     protected void createBlockStateDefinition(
             StateDefinition.Builder<Block, BlockState> builder
     ) {
-        builder.add(LAYERS, CURRENCY);
+        builder.add(LAYERS, CURRENCY, WATERLOGGED);
+    }
+
+    @Override
+    public @Nullable BlockState getStateForPlacement(@NotNull BlockPlaceContext blockPlaceContext) {
+        FluidState fluid = blockPlaceContext.getLevel().getFluidState(blockPlaceContext.getClickedPos());
+        return super.getStateForPlacement(blockPlaceContext) != null ? super.getStateForPlacement(blockPlaceContext).setValue(WATERLOGGED, fluid.getType() == Fluids.WATER) : null;
+    }
+
+    @Override
+    public @NotNull FluidState getFluidState(BlockState blockState) {
+        return blockState.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(blockState);
+    }
+
+    @Override
+    public @NotNull BlockState updateShape(
+            @NotNull BlockState blockState,
+            @NotNull Direction direction,
+            @NotNull BlockState blockStateFacing,
+            @NotNull LevelAccessor levelAccessor,
+            @NotNull BlockPos blockPos,
+            @NotNull BlockPos blockPosFacing
+    ) {
+        if (blockState.getValue(WATERLOGGED)) {
+            levelAccessor.scheduleTick(blockPos, Fluids.WATER, Fluids.WATER.getTickDelay(levelAccessor));
+        }
+
+        if (direction.equals(Direction.DOWN) && !blockState.canSurvive(levelAccessor, blockPos)) {
+            return Blocks.AIR.defaultBlockState();
+        }
+
+        return super.updateShape(blockState, direction, blockStateFacing, levelAccessor, blockPos, blockPosFacing);
     }
 
     @Override
@@ -182,7 +223,11 @@ public class CoinPileBlock extends Block implements EntityBlock {
         level.playSound(null, blockPos.getX(), blockPos.getY(), blockPos.getZ(), this.soundType.getBreakSound(), SoundSource.PLAYERS);
 
         if (layers <= 1) {
-            level.removeBlock(blockPos, false);
+            if (blockState.getValue(WATERLOGGED)) {
+                level.setBlock(blockPos, Blocks.WATER.defaultBlockState(), 2);
+            } else {
+                level.removeBlock(blockPos, false);
+            }
         } else {
             level.setBlock(blockPos, blockState.setValue(LAYERS, layers - 1), 2);
         }

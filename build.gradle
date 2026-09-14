@@ -92,6 +92,9 @@ dependencies {
 
     //VortyLib - required dependency
     implementation("xox.labvorty.vortylib:vortylib-template-1.21.1:1.2.2")
+
+    //Jade
+    implementation("curse.maven:jade-324717:8591319")
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {

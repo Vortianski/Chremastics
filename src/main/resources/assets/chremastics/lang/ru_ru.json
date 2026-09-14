@@ -1,4 +1,6 @@
 {
+  "block.chremastics.coin_pile": "Кучка Монет",
+
   "item.chremastics.copper_coin": "Медная Монета",
   "item.chremastics.silver_coin": "Серебряная Монета",
   "item.chremastics.gold_coin": "Золотая Монета",
@@ -17,5 +19,7 @@
   "vortylib.tab.coins": "Монеты",
   "vortylib.tab.coin_bags": "Мешки Монет",
 
-  "chremastics.coin.value": "Ценность монеты: %s¢"
+  "chremastics.coin.value": "Ценность монеты: %s¢",
+  "config.jade.plugin_chremastics.coin_pile": "Кучка Монет",
+  "chremastics.jade.layers": "Слои: %s"
 }

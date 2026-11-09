@@ -4,9 +4,11 @@ import net.minecraft.network.chat.Component;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import xox.labvorty.chremastics.Chremastics;
 import xox.labvorty.chremastics.data.configs.ClientConfig;
 import xox.labvorty.chremastics.data.configs.CommonConfig;
+import xox.labvorty.chremastics.gui.screen.ChremasticsScreen;
 import xox.labvorty.vortylib.data.config.ConfigHolder;
 import xox.labvorty.vortylib.data.config.ModEntry;
 import xox.labvorty.vortylib.data.config.ModRegistry;
@@ -70,4 +72,14 @@ public class ChremasticsInitialization {
             );
         });
     }
+
+
+    @SubscribeEvent
+    public static void registerScreens(RegisterMenuScreensEvent event) {
+        event.register(
+                ChremasticsMenuType.CHREMASTICS.get(),
+                ChremasticsScreen::new
+        );
+    }
+
 }

@@ -81,10 +81,7 @@ public abstract class LivingEntityMixin {
         List<ItemStack> itemStacks = CurrencyHandlers.getStacksFromValue(value);
 
         if (entity instanceof LivingEntity living) {
-            boolean hasBentCoin = CurioUtilities.hasCurioItem(
-                    living,
-                    ChremasticsCurioItems.BENT_COIN.get()
-            );
+            boolean hasBentCoin = CurioUtilities.hasBentCoin(living);
 
             if (hasBentCoin) {
                 if (livingEntity.getRandom().nextDouble() < CommonConfig.BENT_COIN_CHANCE.get()) {

@@ -10,9 +10,19 @@
   "item.chremastics.traders_insignia": "Печатка Торговця",
 
   "chremastics.tooltip.bent_coin": "Коли одягнено має шанс %s%% подвоїти тримані монети після вбиства створінь, і %s%% отримати лише 1 Мідну Монету",
-  "chremastics.tooltip.traders_insignia": "Когда одягнено, знижує ціну покупки за монети у селян на %s%%",
-  "chremastics.tooltip.deposit_zone": "Покласти на рахунок монету утримувану курсором",
-  "chremastics.tooltip.deposit_all": "Покласти на рахунок всі монети в інвентарі",
+  "chremastics.tooltip.traders_insignia": "Коли одягнено, знижує ціну покупки за монети у селян на %s%%",
+  "gui.chremastics.purse": "Мішок Монет",
+  "gui.chremastics.deposit": "Покласти на рахунок",
+  "gui.chremastics.deposit_hint": "Кладіть монети сюди",
+  "gui.chremastics.deposit_all": "Все",
+  "gui.chremastics.deposit_all.tooltip": "Покласти на рахунок усі монети в інвентарі",
+  "gui.chremastics.currency": "Валюта",
+  "gui.chremastics.amount": "Кількість: %s",
+  "gui.chremastics.withdraw": "Зняти з рахунку",
+  "currency.chremastics.copper": "Мідна",
+  "currency.chremastics.silver": "Срібна",
+  "currency.chremastics.gold": "Золота",
+  "currency.chremastics.platinum": "Платинова",
 
   "subtitle.chremastics.coin_jingle": "Монети Дзвенять",
 

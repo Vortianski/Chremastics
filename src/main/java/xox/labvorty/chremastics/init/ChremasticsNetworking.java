@@ -6,6 +6,7 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import xox.labvorty.chremastics.Chremastics;
 import xox.labvorty.chremastics.data.network.CoinPayload;
 import xox.labvorty.chremastics.data.network.ConfigSyncPacket;
+import xox.labvorty.chremastics.data.network.OpenPursePayload;
 import xox.labvorty.vortylib.VortyLib;
 
 @EventBusSubscriber(modid = Chremastics.MOD_ID)
@@ -22,6 +23,11 @@ public class ChremasticsNetworking {
                     ConfigSyncPacket.TYPE,
                     ConfigSyncPacket.STREAM_CODEC,
                     ConfigSyncPacket::handle
+            );
+            VortyLib.addNetworkMessage(
+                    OpenPursePayload.TYPE,
+                    OpenPursePayload.STREAM_CODEC,
+                    OpenPursePayload::handle
             );
         });
     }

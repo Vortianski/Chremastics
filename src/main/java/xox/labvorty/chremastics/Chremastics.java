@@ -27,6 +27,7 @@ public class Chremastics {
         ChremasticsCreativeTabs.CREATIVE_MODE_TABS.register(modEventBus);
         ChremasticsAttachments.ATTACHMENT_TYPES.register(modEventBus);
         ChremasticsLootModifiers.LOOT_MODIFIERS.register(modEventBus);
+        ChremasticsMenuType.MENU_TYPES.register(modEventBus);
 
         modContainer.registerConfig(ModConfig.Type.COMMON, CommonConfig.SPEC);
         modContainer.registerConfig(ModConfig.Type.CLIENT, ClientConfig.SPEC);

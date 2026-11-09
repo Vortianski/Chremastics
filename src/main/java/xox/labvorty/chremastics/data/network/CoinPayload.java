@@ -65,19 +65,50 @@ public record CoinPayload(int id, int amount, int currencyOrdinal) implements Cu
 
                 if (coinPayload.id == 2) {
                     Currency[] tiers = Currency.values();
-                    if (coinPayload.currencyOrdinal < 0 || coinPayload.currencyOrdinal >= tiers.length) return;
-                    if (coinPayload.amount <= 0) return;
+                    if (coinPayload.currencyOrdinal < 0 || coinPayload.currencyOrdinal >= tiers.length) {
+                        return;
+                    }
+
+                    if (coinPayload.amount <= 0) {
+                        return;
+                    }
 
                     Currency currency = tiers[coinPayload.currencyOrdinal];
-                    int requiredValue = currency.getValue() * coinPayload.amount();
+                    int coinValue = currency.getValue();
 
-                    if (!PlayerCoinPurse.tryRemoveBalance(serverPlayer, requiredValue)) return;
+                    if (coinValue <= 0) {
+                        return;
+                    }
+
+                    long balance = PlayerCoinPurse.getBalance(serverPlayer);
+                    long affordable = balance / coinValue;
+                    long actualAmount = Math.min((long) coinPayload.amount, affordable);
+
+                    if (actualAmount <= 0) {
+                        return;
+                    }
+
+                    long totalValue = actualAmount * coinValue;
+
+                    if (totalValue > Integer.MAX_VALUE) {
+                        return;
+                    }
+
+                    if (!PlayerCoinPurse.tryRemoveBalance(serverPlayer, (int)totalValue)) {
+                        return;
+                    }
 
                     CoinItem coinItem = CurrencyHandlers.getCoinFromCurrency(currency);
-                    int remaining = coinPayload.amount;
+                    long remaining = actualAmount;
+
                     while (remaining > 0) {
-                        int chunk = Math.min(99, remaining);
-                        VortyLibUtilities.tryInsertOrDrop(serverPlayer, new ItemStack(coinItem, chunk));
+                        int chunk = (int) Math.min(99L, remaining);
+
+                        VortyLibUtilities.tryInsertOrDrop(
+                                serverPlayer,
+                                new ItemStack(coinItem, chunk)
+                        );
+
                         remaining -= chunk;
                     }
                 }

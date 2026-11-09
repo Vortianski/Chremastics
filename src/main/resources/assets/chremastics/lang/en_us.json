@@ -13,6 +13,18 @@
   "chremastics.tooltip.traders_insignia": "When equipped, reduces coin prices when trading with villagers by %s%%",
   "chremastics.tooltip.deposit_zone": "Deposit coin held by cursor",
   "chremastics.tooltip.deposit_all": "Deposit all coins from inventory",
+  "gui.chremastics.purse": "Coin Purse",
+  "gui.chremastics.deposit": "Deposit coins",
+  "gui.chremastics.deposit_hint": "Place coins here",
+  "gui.chremastics.deposit_all": "All",
+  "gui.chremastics.deposit_all.tooltip": "Deposit all coins from inventory",
+  "gui.chremastics.currency": "Currency",
+  "gui.chremastics.amount": "Amount: %s",
+  "gui.chremastics.withdraw": "Withdraw",
+  "currency.chremastics.copper": "Copper",
+  "currency.chremastics.silver": "Silver",
+  "currency.chremastics.gold": "Gold",
+  "currency.chremastics.platinum": "Platinum",
 
   "subtitle.chremastics.coin_jingle": "Coins Jingle",
 
